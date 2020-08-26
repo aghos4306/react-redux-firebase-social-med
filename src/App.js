@@ -7,6 +7,7 @@ import Register from './Components/Auth/Register';
 import PostDetails from './Components/Posts/PostDetails';
 import Feeds from './Components/HomePage/Feeds';
 import LogOut from './Components/Auth/LogOut';
+import CreateNewPost from './Components/Posts/CreateNewPost';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <NavigationBar />
         <Switch>
           <Route exact path="/login" component={LogIn}></Route>
+          <Route exact path="/create" component={CreateNewPost}></Route>
           <Route exact path="/logout" component={LogOut}></Route>
           <Route exact path="/register" component={Register}></Route>
           <Route exact path="/post/:id" component={PostDetails}></Route>
