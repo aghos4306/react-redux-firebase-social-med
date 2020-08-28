@@ -1,4 +1,5 @@
 import React from 'react';
+import Firebase from 'firebase';
 
 class LogIn extends React.Component {
   constructor(props) {
@@ -22,11 +23,15 @@ class LogIn extends React.Component {
 
   handleSubmission = (e) => {
     e.preventDefault();
-    console.log(this.state);
-  };
-
-  handleClick = (event) => {
-    console.log(this);
+    //console.log(this.state);
+    Firebase.auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        console.log('Login Success');
+      })
+      .catch((err) => {
+        console.log('Login fails: ' + err);
+      });
   };
 
   render() {
@@ -43,10 +48,6 @@ class LogIn extends React.Component {
           </div>
           <button className="btn waves-effect waves-light" type="submit" name="action">
             Login
-          </button>
-
-          <button type="button" onClick={this.handleClick}>
-            Click Me
           </button>
         </form>
       </div>

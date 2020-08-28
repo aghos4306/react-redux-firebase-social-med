@@ -27,12 +27,12 @@ const db = Firebase.firestore();
 db.collection('posts')
   .get()
   .then((resp) => {
-    // console.log('resp is: ');
+    console.log('resp is: ');
     console.log(resp);
-    /* console.log('resp.doc is: ' + resp.docs);
+    console.log('resp.doc is: ' + resp.docs);
     console.log(resp.docs);
     console.log('resp.docs[0].data()');
-    console.log(resp.docs[0].data()); */
+    console.log(resp.docs[0].data());
   })
   .catch((err) => {
     console.log(err);
