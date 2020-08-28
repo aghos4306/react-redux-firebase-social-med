@@ -8,6 +8,35 @@ import PostDetails from './Components/Posts/PostDetails';
 import Feeds from './Components/HomePage/Feeds';
 import LogOut from './Components/Auth/LogOut';
 import CreateNewPost from './Components/Posts/CreateNewPost';
+import Firebase from 'firebase';
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: 'AIzaSyA09F6P7I8K58pVWYnBkJmY9vSf2e_jt9o',
+  authDomain: 'reactreduxsocialapp.firebaseapp.com',
+  databaseURL: 'https://reactreduxsocialapp.firebaseio.com',
+  projectId: 'reactreduxsocialapp',
+  storageBucket: 'reactreduxsocialapp.appspot.com',
+  messagingSenderId: '210258481853',
+  appId: '1:210258481853:web:c343364846c1225e59ddd4',
+};
+// Initialize Firebase
+Firebase.initializeApp(firebaseConfig);
+
+const db = Firebase.firestore();
+db.collection('posts')
+  .get()
+  .then((resp) => {
+    // console.log('resp is: ');
+    console.log(resp);
+    /* console.log('resp.doc is: ' + resp.docs);
+    console.log(resp.docs);
+    console.log('resp.docs[0].data()');
+    console.log(resp.docs[0].data()); */
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 function App() {
   return (

@@ -13,14 +13,20 @@ class LogIn extends React.Component {
   }
 
   handleChange = (e) => {
+    console.log(this);
     this.setState({
       [e.target.id]: e.target.value,
     });
+    console.log(this.state);
   };
 
   handleSubmission = (e) => {
     e.preventDefault();
     console.log(this.state);
+  };
+
+  handleClick = (event) => {
+    console.log(this);
   };
 
   render() {
@@ -37,6 +43,10 @@ class LogIn extends React.Component {
           </div>
           <button className="btn waves-effect waves-light" type="submit" name="action">
             Login
+          </button>
+
+          <button type="button" onClick={this.handleClick}>
+            Click Me
           </button>
         </form>
       </div>
