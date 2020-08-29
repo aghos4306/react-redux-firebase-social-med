@@ -1,20 +1,39 @@
-//const currentTime = new Date();
+import { firebaseReducer } from 'react-redux-firebase';
+import { combineReducers } from 'redux';
 
 const initialState = {
   posts: [],
   userData: {},
   userActionErr: null,
+  loginStatus: false,
 };
 
-const rootReducers = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'LOGIN_ERROR':
+      return {
+        ...state,
+        userActionErr: action.error.code,
+      };
+    case 'LOGIN_SUCCESS':
+      console.log('Login success, state not changed');
+      return {
+        ...state,
+        loginStatus: true,
+      };
+    default:
+      return state;
+  }
+};
+
+const postReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_NEW_POST':
       console.log('A new post has been added');
       return state;
 
     case 'CREATE_NEW_POST_FAIL':
-      console.log('An error occured ' + action.err.message);
-
+      console.log('An error has occurred: ' + action.err.message);
       return {
         ...state,
         userActionErr: action.err.message,
@@ -28,5 +47,11 @@ const rootReducers = (state = initialState, action) => {
       return state;
   }
 };
+
+const rootReducers = combineReducers({
+  auth: authReducer,
+  post: postReducer,
+  firebase: firebaseReducer,
+});
 
 export default rootReducers;
