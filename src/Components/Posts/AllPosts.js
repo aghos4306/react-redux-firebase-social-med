@@ -1,9 +1,12 @@
 import React from 'react';
 import PostSummary from './PostSummary';
 import { connect } from 'react-redux';
-import { removePosts } from '../../store/actions/postActions';
+import { removePosts, getPosts } from '../../store/actions/postActions';
 
 class AllPosts extends React.Component {
+  componentDidMount = () => {
+    this.props.getPosts();
+  };
   render() {
     return (
       <div>
@@ -19,7 +22,7 @@ class AllPosts extends React.Component {
 //export default AllPosts;
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts,
+    posts: state.post.posts,
   };
 };
 
@@ -27,6 +30,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     removePost: () => {
       dispatch(removePosts());
+    },
+    getPosts: () => {
+      dispatch(getPosts());
     },
   };
 };

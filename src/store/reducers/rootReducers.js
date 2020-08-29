@@ -1,13 +1,11 @@
 import { firebaseReducer } from 'react-redux-firebase';
 import { combineReducers } from 'redux';
-
 const initialState = {
   posts: [],
   userData: {},
   userActionErr: null,
   loginStatus: false,
 };
-
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_ERROR':
@@ -28,6 +26,12 @@ const authReducer = (state = initialState, action) => {
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'FETCHED_POST_SUCCESS':
+      return {
+        ...state,
+        posts: action.resp,
+      };
+
     case 'CREATE_NEW_POST':
       console.log('A new post has been added');
       return state;
@@ -47,11 +51,9 @@ const postReducer = (state = initialState, action) => {
       return state;
   }
 };
-
 const rootReducers = combineReducers({
   auth: authReducer,
   post: postReducer,
   firebase: firebaseReducer,
 });
-
 export default rootReducers;
