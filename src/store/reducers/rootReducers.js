@@ -1,4 +1,4 @@
-const currentTime = new Date();
+//const currentTime = new Date();
 
 const initialState = {
   posts: [],

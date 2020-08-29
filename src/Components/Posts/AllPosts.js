@@ -10,7 +10,7 @@ class AllPosts extends React.Component {
         <button className="btn" onClick={this.props.removePost}>
           Remove All Posts
         </button>
-        {this.props.posts ? this.props.posts.map((post) => <PostSummary post={post} key={Math.random() * 99} />) : 'Loading...'}
+        {this.props.posts.length > 0 ? this.props.posts.map((post) => <PostSummary post={post} key={Math.random() * 99} />) : 'Loading...'}
       </div>
     );
   }
