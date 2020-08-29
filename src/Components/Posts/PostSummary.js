@@ -4,8 +4,8 @@ class PostSummary extends React.Component {
   render() {
     return (
       <div className="card post">
-        <div className="card-title">Post Title Here</div>
-        <div className="card-title">Post Content Here</div>
+        <div className="card-title">{this.props.post.title}</div>
+        <div className="card-title">{this.props.post.content}</div>
       </div>
     );
   }
