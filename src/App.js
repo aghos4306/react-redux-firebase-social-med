@@ -23,7 +23,7 @@ var firebaseConfig = {
 // Initialize Firebase
 Firebase.initializeApp(firebaseConfig);
 
-const db = Firebase.firestore();
+/* const db = Firebase.firestore();
 db.collection('posts')
   .get()
   .then((resp) => {
@@ -36,7 +36,7 @@ db.collection('posts')
   })
   .catch((err) => {
     console.log(err);
-  });
+  }); */
 
 function App() {
   return (
