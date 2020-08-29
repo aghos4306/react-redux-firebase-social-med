@@ -6,7 +6,7 @@ class AllPosts extends React.Component {
   render() {
     console.log('Received a state from reducer');
     console.log(this.props.posts);
-    return <div>{this.props.posts ? this.props.posts.map((post) => <PostSummary post={post} key={post.id} />) : 'Loading...'}</div>;
+    return <div>{this.props.posts ? this.props.posts.map((post) => <PostSummary post={post} key={Math.random() * 99} />) : 'Loading...'}</div>;
   }
 }
 

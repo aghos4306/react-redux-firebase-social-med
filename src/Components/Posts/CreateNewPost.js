@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createPost } from '../../store/actions/postActions';
+//import { createPost } from '../../store/actions/postActions';
 
 class CreateNewPost extends React.Component {
   constructor(props) {
@@ -46,14 +46,17 @@ class CreateNewPost extends React.Component {
 }
 
 //export default CreateNewPost;
-const mapStateToProps = (state) => {
-  return {};
-};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post) => dispatch(createPost(post)),
+    createPost: (post) => {
+      console.log(post);
+      return dispatch({
+        type: 'CREATE_NEW_POST',
+        post: post,
+      });
+    },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateNewPost);
+export default connect(null, mapDispatchToProps)(CreateNewPost);
