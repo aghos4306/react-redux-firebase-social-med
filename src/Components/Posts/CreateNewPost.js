@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { createPost } from '../../store/actions/postActions';
+import { createPost } from '../../store/actions/postActions';
 
 class CreateNewPost extends React.Component {
   constructor(props) {
@@ -49,13 +49,7 @@ class CreateNewPost extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post) => {
-      console.log(post);
-      return dispatch({
-        type: 'CREATE_NEW_POST',
-        post: post,
-      });
-    },
+    createPost: (post) => dispatch(createPost(post)),
   };
 };
 
